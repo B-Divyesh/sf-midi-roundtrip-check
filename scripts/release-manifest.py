@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 import json, os, sys
+from urllib.parse import quote
 repo, tag, directory = sys.argv[1:]
 files = sorted(f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f)) and f not in ('SHA256SUMS', 'latest.json'))
-def url(f): return f"https://github.com/{repo}/releases/download/{tag}/{f}"
+def url(f): return f"https://github.com/{repo}/releases/download/{tag}/{quote(f)}"
 def choose(words):
     return next((f for f in files if any(w in f.lower() for w in words)), None)
 assets = {}

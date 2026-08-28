@@ -71,6 +71,7 @@ jobs:
         run: |
           find release-assets -type f -exec mv -t release-assets {} + 2>/dev/null || true
           find release-assets -depth -mindepth 1 -type d -empty -delete
+          for file in release-assets/*; do clean="${file// /.}"; [ "$file" = "$clean" ] || mv "$file" "$clean"; done
           cd release-assets
           sha256sum * > SHA256SUMS
           python3 ../scripts/release-manifest.py "$REPO" "$TAG" . > latest.json

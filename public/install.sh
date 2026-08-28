@@ -13,8 +13,9 @@ case "$(uname -s):$arch" in
 esac
 curl -fsSL "$base/latest.json" -o "$work/latest.json"
 url="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["assets"][sys.argv[2]]["url"])' "$work/latest.json" "$key")"
+name="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["assets"][sys.argv[2]]["name"])' "$work/latest.json" "$key")"
 [ -n "$url" ] || { echo "Release manifest has no $key build." >&2; exit 1; }
-file="$work/$(basename "$url")"
+file="$work/$name"
 curl -fL "$url" -o "$file"
 curl -fsSL "$base/SHA256SUMS" -o "$work/SHA256SUMS"
 (cd "$work" && grep "  $(basename "$file")$" SHA256SUMS | sha256sum -c -)

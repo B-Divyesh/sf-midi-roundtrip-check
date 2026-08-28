@@ -4,7 +4,7 @@ $base = "https://github.com/$repo/releases/latest/download"
 $manifest = Invoke-RestMethod "$base/latest.json"
 $url = $manifest.assets.windows.url
 if (-not $url) { throw "Release manifest has no Windows build." }
-$name = Split-Path $url -Leaf
+$name = $manifest.assets.windows.name
 $target = Join-Path $env:TEMP $name
 Invoke-WebRequest $url -OutFile $target
 $sums = (Invoke-WebRequest "$base/SHA256SUMS").Content
