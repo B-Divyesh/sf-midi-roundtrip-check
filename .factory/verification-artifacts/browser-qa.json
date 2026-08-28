@@ -1,0 +1,348 @@
+{
+  "cold": {
+    "title": "MIDI Roundtrip Check — a fidelity receipt for your MIDI",
+    "h1": [
+      "Catch what your MIDI export left behind."
+    ],
+    "sampleActions": [],
+    "cookies": [],
+    "storage": []
+  },
+  "normal": {
+    "score": "Clear\nHEALTH CHECK",
+    "metrics": "Notes\n1\nPitch bends\n2\nControllers\n1\nPrograms\n1",
+    "findings": "What needs attention\ni\nPitch-bend range is implicit\n\nNo RPN pitch-bend range was found. Many General MIDI players assume ±2 semitones, but instruments can differ.",
+    "timelineMarks": 4
+  },
+  "csv": {
+    "suggestedFilename": "normal-export-midi-check.csv",
+    "content": "\"kind\",\"severity\",\"track\",\"channel\",\"tick\",\"seconds\",\"label\",\"detail\"\n\"finding\",\"info\",\"\",\"\",\"\",\"\",\"Pitch-bend range is implicit\",\"No RPN pitch-bend range was found. Many General MIDI players assume ±2 semitones, but instruments can differ.\"\n\"program\",\"\",\"1\",\"1\",\"0\",\"0.000\",\"Program 11\",\"\"\n\"controller\",\"\",\"1\",\"1\",\"0\",\"0.000\",\"Breath · 90\",\"\"\n\"pitch-bend\",\"\",\"1\",\"1\",\"0\",\"0.000\",\"Pitch bend +4096\",\"\"\n\"note-on\",\"\",\"1\",\"1\",\"0\",\"0.000\",\"Note on 60\",\"\"\n\"note-off\",\"\",\"1\",\"1\",\"96\",\"0.100\",\"Note off 60\",\"\"\n\"pitch-bend\",\"\",\"1\",\"1\",\"96\",\"0.100\",\"Pitch bend +0\",\"\""
+  },
+  "comparison": {
+    "score": "0%\nINTENT FIDELITY",
+    "verdict": "!\n3 export differences found\n\n0 of 4 reference intent events matched exactly.",
+    "findingTitles": [
+      "Program change moved to another channel",
+      "1 controller event missing",
+      "2 pitch bend events missing",
+      "1 unexpected intent event"
+    ],
+    "findingDetails": [
+      "At tick 0, the reference uses channel 1; the export uses channel 2.",
+      "Channel 1, CC 2 (Breath). First expected at tick 0.",
+      "Channel 1, Pitch bend +4096. First expected at tick 0.",
+      "The export adds program, controller, or pitch-bend data that was not in the reference."
+    ]
+  },
+  "axeAfterResults": [
+    {
+      "id": "aria-valid-attr-value",
+      "impact": "critical",
+      "help": "ARIA attributes must conform to valid values",
+      "nodes": [
+        {
+          "target": [
+            "#compare-tab"
+          ],
+          "html": "<button class=\"tab active\" id=\"compare-tab\" role=\"tab\" aria-selected=\"true\" aria-controls=\"compare-panel\">Compare export</button>",
+          "failureSummary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-controls=\"compare-panel\""
+        }
+      ]
+    }
+  ],
+  "invalidExtension": "That file does not look like MIDI\n\nChoose a file ending in .mid or .midi. Nothing was uploaded.",
+  "malformed": "This MIDI could not be read\n\nThis is not a Standard MIDI File: the MThd header is missing.",
+  "boundaryRecovery": {
+    "metrics": "Notes\n0\nPitch bends\n1\nControllers\n1\nPrograms\n1",
+    "findings": "What needs attention\n△\nPitch bend does not return to center\n\nChannel 16 ends at +8191. The next note may inherit that bend on some players.\n\nTrack 1 · Channel 16\ni\nPitch-bend range is implicit\n\nNo RPN pitch-bend range was found. Many General MIDI players assume ±2 semitones, but instruments can differ.\n\ni\nManufacturer-specific controller intent\n\nCC 127 is not assigned a common General MIDI label. Confirm the destination understands it."
+  },
+  "zero-division.mid": "This MIDI could not be read\n\nThe MIDI file has a zero ticks-per-quarter-note value.",
+  "smpte.mid": "This MIDI could not be read\n\nSMPTE time division is valid MIDI but is not supported by this checker yet.",
+  "truncated.mid": "This MIDI could not be read\n\nThe file ends unexpectedly while reading header length (byte 4).",
+  "empty": {
+    "score": "Clear\nHEALTH CHECK",
+    "timeline": "No controller timeline in this file\n\nThe file contains notes, but no pitch bend, program change, or control-change messages."
+  },
+  "firstTab": {
+    "text": "Skip to analyzer",
+    "tag": "A",
+    "outline": "rgb(53, 231, 224) solid 3px",
+    "rect": {
+      "x": 8,
+      "y": 8,
+      "width": 160.75,
+      "height": 44.796875,
+      "top": 8,
+      "right": 168.75,
+      "bottom": 52.796875,
+      "left": 8
+    }
+  },
+  "enterOpensChooser": false,
+  "arrowRightTab": {
+    "focused": "Quick check",
+    "quickSelected": "true",
+    "compareSelected": "false"
+  },
+  "restoreFocus": {
+    "id": "license-token",
+    "name": null,
+    "tag": "INPUT"
+  },
+  "invalidLicense": "This license is no longer active. You can purchase a new license below.",
+  "storageAfterLicense": {
+    "sb_license:midi-roundtrip-check": "qa-invalid-token-browser",
+    "sb_license:midi-roundtrip-check:verify": "{\"valid\":false,\"checked\":1787911593314}"
+  },
+  "requests": [
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/",
+      "method": "GET",
+      "resourceType": "document",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/market-signal.webp",
+      "method": "GET",
+      "resourceType": "image",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/assets/main-DJbOyIHI.js",
+      "method": "GET",
+      "resourceType": "script",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/assets/style-Dt7tKJMS.css",
+      "method": "GET",
+      "resourceType": "stylesheet",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/latest.json",
+      "method": "GET",
+      "resourceType": "fetch",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/mark.svg",
+      "method": "GET",
+      "resourceType": "image",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/market-signal.avif",
+      "method": "GET",
+      "resourceType": "image",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/",
+      "method": "GET",
+      "resourceType": "document",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/market-signal.webp",
+      "method": "GET",
+      "resourceType": "image",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/assets/main-DJbOyIHI.js",
+      "method": "GET",
+      "resourceType": "script",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/assets/style-Dt7tKJMS.css",
+      "method": "GET",
+      "resourceType": "stylesheet",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/latest.json",
+      "method": "GET",
+      "resourceType": "fetch",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/mark.svg",
+      "method": "GET",
+      "resourceType": "image",
+      "postData": null
+    },
+    {
+      "url": "https://midi-roundtrip-check.sociobot.in/market-signal.avif",
+      "method": "GET",
+      "resourceType": "image",
+      "postData": null
+    },
+    {
+      "url": "https://api.sociobot.in/api/v1/products/midi-roundtrip-check/verify?license=qa-invalid-token-browser",
+      "method": "GET",
+      "resourceType": "fetch",
+      "postData": null
+    }
+  ],
+  "errors": [],
+  "mobile": {
+    "overflow": {
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    "axe": [],
+    "undersizedTargets": [
+      {
+        "tag": "A",
+        "text": "MIDI Roundtrip Check",
+        "id": "",
+        "width": 212,
+        "height": 32
+      },
+      {
+        "tag": "A",
+        "text": "Analyzer",
+        "id": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "tag": "A",
+        "text": "Download",
+        "id": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "tag": "A",
+        "text": "Receipt mode",
+        "id": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "export-input",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "reference-input",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Choose reference",
+        "id": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "license-token",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Verify license",
+        "id": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "tag": "A",
+        "text": "MIDI Roundtrip Check",
+        "id": "",
+        "width": 350,
+        "height": 28
+      },
+      {
+        "tag": "A",
+        "text": "Privacy",
+        "id": "",
+        "width": 58,
+        "height": 25
+      },
+      {
+        "tag": "A",
+        "text": "Terms",
+        "id": "",
+        "width": 47,
+        "height": 25
+      },
+      {
+        "tag": "A",
+        "text": "Source",
+        "id": "",
+        "width": 55,
+        "height": 25
+      }
+    ],
+    "motion": {
+      "reduce": true,
+      "scrollBehavior": "auto",
+      "heroAnimation": "1e-05s"
+    },
+    "text200": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "scrollHeight": 4103
+    }
+  },
+  "route:/privacy/": {
+    "status": 200,
+    "title": "Privacy — MIDI Roundtrip Check",
+    "h1": [
+      "Privacy"
+    ],
+    "sampleActions": [],
+    "axe": []
+  },
+  "route:/terms/": {
+    "status": 200,
+    "title": "Terms — MIDI Roundtrip Check",
+    "h1": [
+      "Terms"
+    ],
+    "sampleActions": [],
+    "axe": []
+  },
+  "route:/demo": {
+    "status": 200,
+    "title": "MIDI Roundtrip Check — a fidelity receipt for your MIDI",
+    "h1": [
+      "Catch what your MIDI export left behind."
+    ],
+    "sampleActions": [],
+    "axe": []
+  },
+  "route:/does-not-exist": {
+    "status": 200,
+    "title": "MIDI Roundtrip Check — a fidelity receipt for your MIDI",
+    "h1": [
+      "Catch what your MIDI export left behind."
+    ],
+    "sampleActions": [],
+    "axe": []
+  },
+  "offline": {
+    "scope": "https://midi-roundtrip-check.sociobot.in/",
+    "caches": [
+      "midi-roundtrip-check-v2"
+    ],
+    "controlled": true,
+    "reload": {
+      "h1": "Catch what your MIDI export left behind.",
+      "analyzerVisible": true,
+      "downloadHref": "https://github.com/B-Divyesh/sf-midi-roundtrip-check/releases/download/v0.1.0/MIDI.Roundtrip.Check_0.1.0_amd64.AppImage"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+
+> midi-roundtrip-check@0.1.0 build:app
+> vite build --mode app --outDir dist/app
+
+vite v6.4.3 building for app...
+transforming...
+✓ 7 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/app/index.html                  0.89 kB │ gzip:  0.51 kB
+dist/app/terms/index.html            1.48 kB │ gzip:  0.85 kB
+dist/app/privacy/index.html          1.56 kB │ gzip:  0.86 kB
+dist/app/assets/style-Dt7tKJMS.css  12.54 kB │ gzip:  3.70 kB
+dist/app/assets/main-DJbOyIHI.js    26.82 kB │ gzip: 10.40 kB │ map: 56.45 kB
+✓ built in 369ms

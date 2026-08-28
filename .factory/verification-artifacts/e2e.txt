@@ -1,0 +1,41 @@
+
+> midi-roundtrip-check@0.1.0 test:e2e
+> playwright test
+
+[1A[2K[2m[WebServer] [22m(node:1184) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[2m[WebServer] [22m(node:1203) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[2m[WebServer] [22m(node:1227) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 8 tests using 2 workers
+
+[1A[2K(node:1245) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:1246) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:1246) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:1245) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/8] [mobile] › tests/e2e/app.spec.ts:7:1 › loads accessibly without console errors and analyzes a MIDI file
+[1A[2K[2/8] [desktop] › tests/e2e/app.spec.ts:7:1 › loads accessibly without console errors and analyzes a MIDI file
+[1A[2K[3/8] [mobile] › tests/e2e/app.spec.ts:21:1 › keyboard path opens the file chooser and mobile layout does not overflow
+[1A[2K[4/8] [desktop] › tests/e2e/app.spec.ts:21:1 › keyboard path opens the file chooser and mobile layout does not overflow
+[1A[2K[5/8] [mobile] › tests/e2e/app.spec.ts:30:1 › production build resolves an installer from same-origin metadata without browser errors
+[1A[2K[6/8] [desktop] › tests/e2e/app.spec.ts:30:1 › production build resolves an installer from same-origin metadata without browser errors
+[1A[2K[7/8] [mobile] › tests/e2e/app.spec.ts:45:1 › cached production app and installer metadata work offline
+[1A[2K[8/8] [desktop] › tests/e2e/app.spec.ts:45:1 › cached production app and installer metadata work offline
+[1A[2K  8 passed (16.6s)

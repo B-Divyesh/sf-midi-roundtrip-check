@@ -1,0 +1,19 @@
+{
+  "url": "https://midi-roundtrip-check.sociobot.in",
+  "tool": "lighthouse@12.8.2",
+  "date": "2026-08-28",
+  "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "lcpMs": 1659.584,
+    "cls": 0,
+    "tbtMs": 76,
+    "speedIndexMs": 1001.584,
+    "transferBytes": 153072
+  },
+  "scopeNote": "Initial state only; populated comparison axe evidence is in browser-qa.json."
+}

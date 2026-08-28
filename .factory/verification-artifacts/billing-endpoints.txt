@@ -1,0 +1,20 @@
+--- checkout ---
+status=404 url=https://api.sociobot.in/api/v1/products/midi-roundtrip-check/checkout
+HTTP/2 404
+content-type: application/json
+date: Fri, 28 Aug 2026 09:52:55 GMT
+access-control-allow-credentials: true
+vary: origin, access-control-request-method, access-control-request-headers
+content-length: 48
+
+{"error":"enabled factory product","status":404}--- verify invalid ---
+status=200
+HTTP/2 200
+content-type: application/json
+date: Fri, 28 Aug 2026 09:52:55 GMT
+access-control-allow-credentials: true
+cache-control: no-store
+vary: origin, access-control-request-method, access-control-request-headers
+content-length: 52
+
+{"expires_at":null,"reason":"invalid","valid":false}

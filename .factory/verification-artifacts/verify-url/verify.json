@@ -1,0 +1,14 @@
+{
+  "url": "https://midi-roundtrip-check.sociobot.in",
+  "loadMs": 785,
+  "errors": [],
+  "a11y": {
+    "title": "MIDI Roundtrip Check — a fidelity receipt for your MIDI",
+    "lang": "en",
+    "h1": 1,
+    "main": true,
+    "imgsMissingAlt": 0,
+    "buttonsUnlabeled": 0,
+    "textLength": 1957
+  }
+}

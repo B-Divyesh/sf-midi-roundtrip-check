@@ -1,0 +1,1 @@
+installer/static syntax checks passed

@@ -1,0 +1,2 @@
+first429=31 retry-after=4
+{"requests":160,"counts":{"200":30,"429":130},"first429":31,"firstRetry":"4","elapsedMs":1776}

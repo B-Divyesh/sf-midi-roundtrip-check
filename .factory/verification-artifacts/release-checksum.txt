@@ -1,0 +1,5 @@
+Release: v0.1.0
+Asset: MIDI.Roundtrip.Check_0.1.0_x64-setup.exe
+Published SHA-256 check: OK
+SHA-256: 3aae98b45343e7c3f3cc88e74561ddbe04c3657cec537fbacd4074996a70e60b
+Magic bytes: 4d 5a (PE MZ)
