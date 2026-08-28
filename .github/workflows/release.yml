@@ -70,7 +70,7 @@ jobs:
           TAG: ${{ github.ref_name }}
         run: |
           find release-assets -type f -exec mv -t release-assets {} + 2>/dev/null || true
-          find release-assets -mindepth 1 -type d -empty -delete
+          find release-assets -depth -mindepth 1 -type d -empty -delete
           cd release-assets
           sha256sum * > SHA256SUMS
           python3 ../scripts/release-manifest.py "$REPO" "$TAG" . > latest.json

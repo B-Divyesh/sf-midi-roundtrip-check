@@ -10,7 +10,7 @@ Live site: <https://midi-roundtrip-check.sociobot.in>
 - Shows channel-by-channel controller, program, and pitch-bend timelines.
 - Warns about malformed files, bends left off-center, implicit bend ranges, incomplete bank changes, and unfamiliar controllers.
 - Compares a reference and export by exact tick, channel, controller/program number, and value; distinguishes changed channels from missing events.
-- Exports a plain CSV report for free. A $19 one-time Receipt mode license adds printable HTML receipts and saved handoff slots.
+- Exports a plain CSV report for free. A $19 one-time Receipt mode license adds self-contained printable HTML receipts.
 
 It is an inspector, not a MIDI editor, synth, or playback guarantee. No composition is uploaded and there is no telemetry.
 

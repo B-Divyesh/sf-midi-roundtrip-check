@@ -62,7 +62,7 @@ app.innerHTML = `
 
     <section class="unlock" id="unlock" aria-labelledby="unlock-title">
       <div class="ticket-stub"><span>RECEIPT</span><b>∞</b><small>one-time</small></div>
-      <div><p class="eyebrow">Receipt mode</p><h2 id="unlock-title">Make the handoff presentable.</h2><p>CSV export and every safety check are free. A $19 one-time license adds polished printable HTML receipts, your studio label, and saved before/after slots. No subscription.</p><div class="unlock-actions"><a class="button warm" href="${API}/products/${SLUG}/checkout">Buy Receipt mode · $19</a><button class="text-button" id="restore-toggle" type="button" aria-expanded="false" aria-controls="restore-form">Have a license?</button></div><form id="restore-form" class="restore hidden"><label for="license-token">License token</label><div><input id="license-token" autocomplete="off" spellcheck="false"><button class="button compact" type="submit">Verify license</button></div></form><p id="license-status" class="small" aria-live="polite"></p></div>
+      <div><p class="eyebrow">Receipt mode</p><h2 id="unlock-title">Make the handoff presentable.</h2><p>CSV export and every safety check are free. A $19 one-time license adds polished, self-contained HTML receipts you can print, archive, or send with a project. No subscription.</p><div class="unlock-actions"><a class="button warm" href="${API}/products/${SLUG}/checkout">Buy Receipt mode · $19</a><button class="text-button" id="restore-toggle" type="button" aria-expanded="false" aria-controls="restore-form">Have a license?</button></div><form id="restore-form" class="restore hidden"><label for="license-token">License token</label><div><input id="license-token" autocomplete="off" spellcheck="false"><button class="button compact" type="submit">Verify license</button></div></form><p id="license-status" class="small" aria-live="polite"></p></div>
     </section>
   </main>
   <footer><a class="brand" href="/"><img src="/mark.svg" width="28" height="28" alt="">MIDI Roundtrip Check</a><p>Built for careful musical handoffs. Generated hero artwork is original and disclosed in the project design notes.</p><nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/${REPO}">Source</a></nav></footer>`;
@@ -184,3 +184,4 @@ async function resolveDownload() {
   } catch { note.textContent += ' · You appear to be offline; downloads will work when reconnected.'; }
 }
 void resolveDownload();
+if ('serviceWorker' in navigator && ['http:', 'https:'].includes(location.protocol)) window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => { /* Offline analysis remains available without installability. */ }); });

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://midi-roundtrip-check.sociobot.in/sitemap.xml
