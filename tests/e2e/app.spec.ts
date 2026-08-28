@@ -26,3 +26,29 @@ test('keyboard path opens the file chooser and mobile layout does not overflow',
   const width = await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);
   expect(width, `${testInfo.project.name} viewport should not scroll sideways`).toBe(true);
 });
+
+test('production build resolves an installer from same-origin metadata without browser errors', async ({ page }) => {
+  const errors: string[] = [];
+  const requests: string[] = [];
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('request', request => requests.push(request.url()));
+  await page.goto('/');
+  await expect(page.locator('#platform-download')).toHaveAttribute('href', /releases\/download\/v[^/]+\/.*\.(?:AppImage|exe|dmg)$/);
+  const metadataRequests = requests.filter(url => url.endsWith('/latest.json'));
+  expect(metadataRequests).toEqual(['http://127.0.0.1:4173/latest.json']);
+  expect(requests.some(url => url.includes('github.com') && url.endsWith('/latest.json'))).toBe(false);
+  expect(requests.filter(url => new URL(url).origin !== 'http://127.0.0.1:4173')).toEqual([]);
+  expect(errors).toEqual([]);
+});
+
+test('cached production app and installer metadata work offline', async ({ page, context }) => {
+  await page.goto('/');
+  await page.evaluate(() => navigator.serviceWorker.ready);
+  await page.reload();
+  await expect(page.locator('#platform-download')).toHaveAttribute('href', /\.(?:AppImage|exe|dmg)$/);
+  await context.setOffline(true);
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  await expect(page.locator('#platform-download')).toHaveAttribute('href', /\.(?:AppImage|exe|dmg)$/);
+});

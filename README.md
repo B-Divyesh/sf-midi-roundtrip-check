@@ -52,6 +52,8 @@ The scripts fetch `latest.json`, download the matching release asset, and verify
 
 Tags matching `v*` run [.github/workflows/release.yml](.github/workflows/release.yml) on GitHub-hosted macOS, Windows, and Linux runners. The workflow creates `.dmg`, `.msi`/`.exe`, `.AppImage`, `.deb`, and `.rpm` assets where Tauri supports them, then publishes checksums and the download manifest.
 
+`npm run build:site` refreshes the site's same-origin `/latest.json` from GitHub's CORS-enabled Releases API. If GitHub is unavailable during a build, the checked-in release manifest remains as the offline fallback. Browsers never request the non-CORS GitHub release-manifest redirect.
+
 The factory deploys `dist/site`; this repository does not manage DNS, billing registration, or hosting infrastructure. Receipt mode verifies licenses only through the Sociobot billing API and contains no hardcoded billing product ID.
 
 ## Project notes

@@ -174,14 +174,16 @@ async function resolveDownload() {
   const ua = navigator.userAgent.toLowerCase(); const platform = ua.includes('win') ? 'windows' : ua.includes('mac') ? 'macos' : ua.includes('linux') ? 'linux' : 'other';
   const labels = { windows: 'Download for Windows', macos: 'Download for macOS', linux: 'Download for Linux', other: 'View all downloads' };
   button.textContent = labels[platform]; note.textContent = platform === 'other' ? 'Choose the build for your computer.' : `Detected ${platform === 'macos' ? 'macOS' : platform[0].toUpperCase() + platform.slice(1)} · unsigned v1 builds`;
-  if (!location.hostname.endsWith('sociobot.in') && location.protocol !== 'tauri:') { note.textContent += ' · Release manifest is checked on the published site.'; return; }
   try {
-    const response = await fetch(`https://github.com/${REPO}/releases/latest/download/latest.json`, { cache: 'no-store' });
-    if (!response.ok) return;
+    const response = await fetch('/latest.json', { cache: 'no-cache' });
+    if (!response.ok) throw new Error('Release manifest unavailable');
     const manifest = await response.json() as { assets?: Record<string, { url?: string } | string> };
-    const candidate = Object.entries(manifest.assets ?? {}).find(([key]) => key.toLowerCase().includes(platform));
-    if (candidate) button.href = typeof candidate[1] === 'string' ? candidate[1] : candidate[1].url ?? button.href;
-  } catch { note.textContent += ' · You appear to be offline; downloads will work when reconnected.'; }
+    const assetKey = platform === 'macos' ? (ua.includes('arm') || ua.includes('aarch64') ? 'macos-arm64' : 'macos-x86_64') : platform;
+    const candidate = manifest.assets?.[assetKey] ?? (platform === 'macos' ? manifest.assets?.['macos-arm64'] : undefined);
+    const url = typeof candidate === 'string' ? candidate : candidate?.url;
+    if (!url || !url.startsWith(`https://github.com/${REPO}/releases/download/`)) throw new Error('No matching release asset');
+    button.href = url;
+  } catch { note.textContent += ' · Release details are unavailable; use All platforms.'; }
 }
 void resolveDownload();
 if ('serviceWorker' in navigator && ['http:', 'https:'].includes(location.protocol)) window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => { /* Offline analysis remains available without installability. */ }); });

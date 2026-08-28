@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run build:site",
-    "build:site": "vite build --mode site --outDir dist/site",
+    "build:site": "vite build --mode site --outDir dist/site && node scripts/sync-release-manifest.mjs dist/site/latest.json",
     "build:app": "vite build --mode app --outDir dist/app",
+    "preview:site": "vite preview --outDir dist/site --host 127.0.0.1 --port 4173",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:watch": "vitest",

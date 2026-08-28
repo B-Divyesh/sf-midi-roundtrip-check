@@ -20,7 +20,7 @@
       "fullscreen": false
     }],
     "security": {
-      "csp": "default-src 'self'; img-src 'self' asset: data:; style-src 'self' 'unsafe-inline'; connect-src 'self' https://api.sociobot.in https://github.com; script-src 'self'"
+      "csp": "default-src 'self'; img-src 'self' asset: data:; style-src 'self' 'unsafe-inline'; connect-src 'self' https://api.sociobot.in; script-src 'self'"
     }
   },
   "bundle": {
