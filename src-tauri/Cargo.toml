@@ -1,0 +1,21 @@
+[package]
+name = "midi-roundtrip-check"
+version = "0.1.0"
+description = "A local MIDI export fidelity checker"
+authors = ["Sociobot Param Factory"]
+license = "MIT"
+repository = "https://github.com/B-Divyesh/sf-midi-roundtrip-check"
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+name = "midi_roundtrip_check_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
