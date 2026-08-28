@@ -41,6 +41,12 @@ Repair verified 2026-08-28:
 - Release: <https://github.com/B-Divyesh/sf-midi-roundtrip-check/releases/tag/v0.1.0>
 - Release run `33153901406`: all four build jobs and publish job succeeded. The live API was rechecked and contains both macOS DMGs, Windows EXE/MSI, Linux AppImage/DEB/RPM, `SHA256SUMS`, and `latest.json`. A fresh RPM download again passed its published SHA-256 check (`6fc641a927268b23784a9e2856514201ea7eba957b5658783b3e1c858941bd56`).
 
+## Production deployment evidence
+
+- Repair commit `f067730` was pushed to `origin/main`, then `dist/site` was deployed with the work order's static deployment configuration. Azure Static Web Apps deployment `ab6ab6f5-8624-4ac2-a20b-820e7aea272d` succeeded in `centralus`; the custom domain remained Ready with HTTPS 200.
+- `/opt/fleet/lib/verify-url.sh https://midi-roundtrip-check.sociobot.in /work/.evidence/repair-live` passed: 946 ms load, zero console errors, expected title, `lang="en"`, one `<h1>`, a `<main>`, no images missing alt, and no unlabeled buttons.
+- A separate fresh Chromium identity check loaded the repaired hashed bundle `main-DJbOyIHI.js`, recorded no console/page/request failures, made only same-origin requests, fetched `https://midi-roundtrip-check.sociobot.in/latest.json`, and resolved the Linux button to the real v0.1.0 AppImage. The manifest returned HTTP 200 as `application/json`; the resolved AppImage returned HTTP 200.
+
 ## Known limits
 
 - The checker compares MIDI event intent, not rendered audio; differences caused exclusively by synth patches or sample libraries cannot be detected.
