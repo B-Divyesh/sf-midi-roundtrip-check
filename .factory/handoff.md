@@ -46,6 +46,7 @@ Repair verified 2026-08-28:
 - Repair commit `f067730` was pushed to `origin/main`, then `dist/site` was deployed with the work order's static deployment configuration. Azure Static Web Apps deployment `ab6ab6f5-8624-4ac2-a20b-820e7aea272d` succeeded in `centralus`; the custom domain remained Ready with HTTPS 200.
 - `/opt/fleet/lib/verify-url.sh https://midi-roundtrip-check.sociobot.in /work/.evidence/repair-live` passed: 946 ms load, zero console errors, expected title, `lang="en"`, one `<h1>`, a `<main>`, no images missing alt, and no unlabeled buttons.
 - A separate fresh Chromium identity check loaded the repaired hashed bundle `main-DJbOyIHI.js`, recorded no console/page/request failures, made only same-origin requests, fetched `https://midi-roundtrip-check.sociobot.in/latest.json`, and resolved the Linux button to the real v0.1.0 AppImage. The manifest returned HTTP 200 as `application/json`; the resolved AppImage returned HTTP 200.
+- Live 390 × 844 axe/keyboard/privacy smoke check found zero serious/critical violations, no horizontal overflow, visible focus on “Choose file”, a reduced-motion stylesheet rule, no cookies, and no local-storage keys on a normal first load.
 
 ## Known limits
 
