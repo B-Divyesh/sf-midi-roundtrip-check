@@ -1,0 +1,8 @@
+{
+  "slug": "midi-roundtrip-check",
+  "title": "MIDI Roundtrip Check",
+  "artifact_class": "desktop-app",
+  "smallest_useful_product": "Local desktop utility that opens a MIDI file, visualizes channel/program/controller timelines, flags likely unsupported or out-of-range events, and exports a concise sharing report.",
+  "monetization": "one-time",
+  "constraints": "Parse malformed MIDI defensively; never upload compositions; label heuristics as warnings rather than making playback-correctness guarantees."
+}
