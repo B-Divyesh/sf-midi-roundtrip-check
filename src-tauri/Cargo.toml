@@ -13,9 +13,9 @@ name = "midi_roundtrip_check_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2", features = [] }
+tauri-build = { version = "=2.4.1", features = [] }
 
 [dependencies]
-tauri = { version = "2", features = [] }
+tauri = { version = "=2.8.5", features = [] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
