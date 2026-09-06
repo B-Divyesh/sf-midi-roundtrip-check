@@ -34,6 +34,9 @@ State changes use 180–240 ms opacity and translate transitions. Timeline marks
 ## Original asset plan and provenance
 
 - `public/market-signal.webp` / `.avif`: generated hero scene, used as atmospheric evidence of the “signal market” concept, never as a capability claim.
+- `public/social-preview.webp`: a 1200×630 crop composed from the generated hero scene for page sharing; it adds no new subject matter or text.
+- `public/apple-touch-icon.png`: a 180px raster export of the hand-authored product mark.
+- `public/walkthrough-choose.webp`, `walkthrough-compare.webp`, and `walkthrough-report.webp`: 960×600 screenshots of the built local app, captured 2026-09-06 for the desktop walkthrough. They are original product evidence, not illustrative capability claims.
 - Hand-authored SVG logo and event glyphs are geometric and original to this repository.
 
 Prompt sheet: **Use case:** stylized-concept. **Subject:** an empty midnight electronics market stall where luminous patch cables form clean horizontal music-event timelines, small controller knobs and pitch-bend wheels arranged like produce, no people. **World/materials:** rain-dark painted metal, translucent acrylic, paper inspection receipts. **Light/lens:** cyan, marigold, coral, and violet practical neon; cinematic wide 35mm, quiet and precise, ample negative space. **Negative list:** no text, no letters, no logos, no brands, no watermark, no human figure, no keyboards with malformed keys, no generic purple gradient, no UI screenshot.

@@ -1,0 +1,1 @@
+Check MIDI exports for lost bends, channels, controllers, and programs before you share a file.

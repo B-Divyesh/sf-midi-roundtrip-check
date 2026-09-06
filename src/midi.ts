@@ -186,8 +186,15 @@ export function compareMidi(reference: MidiAnalysis, exported: MidiAnalysis): Co
   for (const e of exported.events.filter(important)) { const key = signature(e, false); exportedLoose.set(key, [...(exportedLoose.get(key) ?? []), e]); }
   const genuinelyMissing: MidiEvent[] = [];
   for (const e of missing) {
-    const loose = exportedLoose.get(signature(e, false))?.find(x => x.channel !== e.channel);
-    if (loose) findings.push({ severity: 'error', code: 'changed-channel', title: `${kindName(e)} moved to another channel`, detail: `At tick ${e.tick}, the reference uses channel ${e.channel}; the export uses channel ${loose.channel}.`, track: e.track, channel: e.channel });
+    const looseEvents = exportedLoose.get(signature(e, false));
+    const looseIndex = looseEvents?.findIndex(x => x.channel !== e.channel) ?? -1;
+    const loose = looseIndex >= 0 ? looseEvents![looseIndex] : undefined;
+    if (loose) {
+      looseEvents!.splice(looseIndex, 1);
+      const movedKey = signature(loose);
+      actual.set(movedKey, Math.max(0, (actual.get(movedKey) ?? 0) - 1));
+      findings.push({ severity: 'error', code: 'changed-channel', title: `${kindName(e)} moved to another channel`, detail: `At tick ${e.tick}, the reference uses channel ${e.channel}; the export uses channel ${loose.channel}.`, track: e.track, channel: e.channel });
+    }
     else genuinelyMissing.push(e);
   }
   const grouped = new Map<string, MidiEvent[]>();

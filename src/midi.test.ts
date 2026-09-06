@@ -25,6 +25,7 @@ describe('MIDI parser', () => {
     const exported = parseMidi(midi([0,0xc1,10]));
     const diff = compareMidi(reference, exported);
     expect(diff.findings.map(f => f.code)).toEqual(expect.arrayContaining(['missing-controller', 'missing-pitch-bend', 'changed-channel']));
+    expect(diff.findings.some(f => f.code === 'extra-events')).toBe(false);
     expect(diff.fidelity).toBe(0);
   });
 

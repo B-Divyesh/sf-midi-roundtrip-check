@@ -1,38 +1,52 @@
 # MIDI Roundtrip Check
 
-MIDI Roundtrip Check is a local-first desktop utility for electronic musicians and score arrangers. It makes pitch bends, channels, programs, and controller intent readable, then compares a source MIDI with an exported copy to catch dropped or moved events.
+MIDI Roundtrip Check is a local MIDI comparison tool for electronic musicians and score arrangers. Compare a reference MIDI with an export to find missing bends, changed channels, controllers, and programs before sharing a file.
 
-Live site: <https://midi-roundtrip-check.sociobot.in>
+Try the bundled sample at <https://midi-roundtrip-check.sociobot.in/demo/>. The sample is separate from real checker data and nothing in it is saved.
 
 ## What it does
 
-- Parses Standard MIDI format 0, 1, and 2 files locally, including running status and tempo maps.
-- Shows channel-by-channel controller, program, and pitch-bend timelines.
-- Warns about malformed files, bends left off-center, implicit bend ranges, incomplete bank changes, and unfamiliar controllers.
-- Compares a reference and export by exact tick, channel, controller/program number, and value; distinguishes changed channels from missing events.
-- Exports a plain CSV report for free. A $19 one-time Receipt mode license adds self-contained printable HTML receipts.
+- Compares a reference MIDI with an exported MIDI on your device.
+- Shows a channel timeline for controller, program, and pitch-bend events.
+- Exports the populated findings as a free CSV file.
+- Explains malformed MIDI files and lets you try a valid file afterwards.
+- Keeps working offline after the first visit.
 
-It is an inspector, not a MIDI editor, synth, or playback guarantee. No composition is uploaded and there is no telemetry.
+MIDI Roundtrip Check is an inspector. It does not edit MIDI, generate audio, install hardware drivers, or promise matching playback on every device.
+
+Receipt mode will add self-contained HTML receipts for a $19 one-time license. Its billing offer is not registered yet, so checkout is intentionally unavailable. CSV export and safety checks remain free.
 
 ## Run and test
 
 Requires Node.js 20+ and Rust 1.77+ for the desktop shell.
 
+On Debian or Ubuntu, install the Tauri build prerequisites before running the Rust check:
+
 ```sh
-npm ci
-npm run dev
-npm test
-npm run test:e2e
-npm run build       # static site -> dist/site
-npm run build:app   # Tauri frontend -> dist/app
-npm run tauri dev
+sudo apt-get update
+sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
 ```
 
-Playwright 1.58.2 is pinned. If Chromium is not already available, run `npx playwright install chromium` once.
+```sh
+npm ci
+npm test
+npm run test:e2e
+npm run build
+npm run build:app
+cargo test --locked --manifest-path src-tauri/Cargo.toml
+```
 
-## Install
+Run a single documented public claim from a clean install:
 
-Download the detected build from the website or the [latest GitHub Release](https://github.com/B-Divyesh/sf-midi-roundtrip-check/releases/latest).
+```sh
+npm run test:e2e -- --grep @claim:sample-comparison
+```
+
+Playwright 1.58.2 is pinned. If Chromium is unavailable, run `npx playwright install chromium` once.
+
+## Use the desktop app
+
+Download the detected build from the website or the [latest GitHub Release](https://github.com/B-Divyesh/sf-midi-roundtrip-check/releases/latest). Version 0.1 builds are unsigned.
 
 macOS or Linux:
 
@@ -46,20 +60,20 @@ Windows PowerShell:
 irm https://midi-roundtrip-check.sociobot.in/install.ps1 | iex
 ```
 
-The scripts fetch `latest.json`, download the matching release asset, and verify it against `SHA256SUMS` before installing or opening it. v0.1 builds are unsigned: on macOS, right-click the app and choose **Open**; on Windows, review the SmartScreen prompt before continuing.
+## Build and deploy
 
-## Releases and deployment
+`npm run build` writes the static site to `dist/site`. It includes the Azure Static Web Apps security, cache, route, and 404 configuration. `npm run build:app` writes the Tauri frontend to `dist/app`.
 
-Tags matching `v*` run [.github/workflows/release.yml](.github/workflows/release.yml) on GitHub-hosted macOS, Windows, and Linux runners. The workflow creates `.dmg`, `.msi`/`.exe`, `.AppImage`, `.deb`, and `.rpm` assets where Tauri supports them, then publishes checksums and the download manifest.
+Tags matching `v*` run the desktop release workflow on GitHub Actions. The workflow publishes macOS, Windows, and Linux artifacts, `SHA256SUMS`, and `latest.json`.
 
-`npm run build:site` refreshes the site's same-origin `/latest.json` from GitHub's CORS-enabled Releases API. If GitHub is unavailable during a build, the checked-in release manifest remains as the offline fallback. Browsers never request the non-CORS GitHub release-manifest redirect.
+The factory deploys `dist/site`. This repository does not manage DNS, infrastructure, or billing registration.
 
-The factory deploys `dist/site`; this repository does not manage DNS, billing registration, or hosting infrastructure. Receipt mode verifies licenses only through the Sociobot billing API and contains no hardcoded billing product ID.
+## Documentation
 
-## Project notes
-
+- [Product brief](.factory/brief.json)
 - [Visual system and image provenance](.factory/design.md)
-- [Build handoff](.factory/handoff.md)
+- [Demo sandbox](.factory/demo.md)
+- [Public claims and verification commands](.factory/claims.json)
 - [Privacy](https://midi-roundtrip-check.sociobot.in/privacy/)
 - [Terms](https://midi-roundtrip-check.sociobot.in/terms/)
 

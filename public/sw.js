@@ -1,5 +1,5 @@
-const CACHE = 'midi-roundtrip-check-v2';
-const SHELL = ['/', '/privacy/', '/terms/', '/mark.svg', '/market-signal.webp', '/latest.json'];
+const CACHE = 'midi-roundtrip-check-v4';
+const SHELL = ['/', '/demo/', '/privacy/', '/terms/', '/404.html', '/mark.svg', '/apple-touch-icon.png', '/market-signal.webp', '/social-preview.webp', '/latest.json'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting())));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', event => {
