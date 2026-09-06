@@ -1,5 +1,13 @@
 # MIDI Roundtrip Check handoff
 
+## Independent verification 2
+
+Verification on 6 September 2026 produced **FAIL — 1 minor finding, 0 untested claims** against implementation `1ac9f6b8646f9efd47b4e046d1c222654d3c5f58` and documentation `cab2476ef8cc1f3f9e3794199de296d10cbd638c`.
+
+The live and installed product completes the MIDI reference/export comparison job. The one-click sample reports four differences, stays labelled, resets, keeps a seeded real-data key unchanged, exports CSV, and reloads offline. Every exact claim command passed on desktop and phone. The clean checkout passed 4 unit tests, 26 browser tests, TypeScript, both builds, and locked Rust tests after the documented Linux packages were installed. The v0.1.1 AppImage checksum matched, the live installer installed it into an empty consumer directory, and the extracted app opened the populated sample under a fresh XDG profile.
+
+The remaining product finding is a minor `aria-allowed-role` axe violation on the persistent demo banner: `<aside role="status">`. The current browser regression filters out minor axe results, so the repository suite passes while the work order's zero-findings rule does not. See `.factory/verification-2.md` and `/work/.evidence/verify-2/`.
+
 ## Release status
 
 Release repair completed on 2026-09-06.
